@@ -1,0 +1,109 @@
+### Yaks config file ###
+
+initial_reactants   C(C1C(C(C(C(O1)O)O)O)O)O:1             				    # list species with initial concentration of 1. unimolecular initiation: D-glucose -> OCC1OC(O)C(C(C1O)O)O:1 or bimol initiation: C(C(C(=O)O)N)O:0.5,CC(C)OP(=O)(C)F:0.5
+calc_folder  		/home/mwoulfe/bin/YARP/version2.0/glu_new	# folder in home directory where err/out/submission files will be stored
+output_path        	/scratch/bell/mwoulfe/yaks/glu_new    		# path to output folder (that holds yarp outputs)
+water_cat	        True									    # True to explore water catalyzed reactions, false to skip (default: False)
+bimolecular         False                                        # True to explore bimolecular reactions with top 5 rule, False to explore only unimolecular (default: True)
+rads                False                    # True to include rads, cations, anions in yaml file, False to exclude
+rev_rxns            True                     # True to include calculated reverse rxns (if we have energies of products and reactants), False to exclude
+exp_steps	        5			             # number of exploration steps/depth to go to (default: 5)
+num_nodes	        5			             # number of nodes to explore at each step (default: 5)
+DG_thresh           50	   		             # YARP calculation activation energy threshold (kcal/mol), TSs with DG larger than this will be discarded (default: None)
+uncertainty_guided  No                     # guide exploration with Gaussian noise (True) or run noisless simulations (default: False)
+uncertainty_cycles  100                       # number of uncertain cycles to run (default: 100)
+uncertainty_range   3                        # in kcal/mol (95% of errors will be within range. default: 3)
+
+### Kinetic Simulation arguements ###
+
+time_step 	        0.1			            # each individual time step in seconds (default: 1)
+steps    	        1200		            # number of steps in each simulation (default: 3600)
+rule		        css 		            # css, final_mass, cum_conc, or cnf (steady state concentration, steady state mass percent, cumulative concentration, or cumulative net flux) (default: final_conc)
+reactor 	        IGCPR 		            # only IGCPR currently (default: IGCPR)
+temp                623                     # Kinetic modeling Temperature in Kelvin (default: 298)
+calc_temp           298                     # Temperature DFT calcs are run at (default: 298)
+E_dict              /depot/bsavoie/data/YARP/DFT-db/B3LYPD3_TZVP.db      	# reactant energy
+pres                1013205                 # Pressure (default: 101325)
+pres_units          Pa                      # Pascals (default: Pascals)
+model_type          constant-cp             # type of model for species (default: constant-cp)
+Ea_cutoff           65                 	 	# activation energy threshold (kcal/mol), rxns with larger barriers will be ignored during network assembly
+energy_units        kcal/mol                # default: kcal/mol
+eos                 ideal-gas               # Other options https://cantera.org/documentation/dev/sphinx/html/yaml/phases.html
+kinetics            gas                     # none, gas, surface, edge (default: gas)
+reactions           all                     # all, declared-species (list of species to determine which rxns to use), none, others
+reactant_dict    	/home/mwoulfe/bin/YARP/version2.0/dict/glu2.p           			# path to reactant dictionary (will be created if doesn't exist)
+smi2inchi        	/home/mwoulfe/bin/YARP/version2.0/dict/khp_smile2InchiDict.p      	# dict of smiles key and inchi values (saves comp cost over time)
+
+### ERS_enumeration arguements ###
+
+ERS_queue           bsavoie              	# queue for ERS_enumeration
+ERS_walltime        10                    	# ERS walltime (hours)
+ers_type 			pb3f3				    # Pb3f3, b3f3, b2f2 (break n form 2, pb3f3 is b2f2 but allows a pi bond rearrangement)
+
+### YARP arguements ###
+
+# reactant and product info
+config_template 	/home/mwoulfe/bin/YARP/version2.0/yaks/config_template.txt 	# just a copy of a base yarp config.txt (declutters yarp calc config files.  Don't need to input.)
+input_type       0               											# 0 refers to take in reactants in the input_list.txt and use the info of reactant_dict (keep 0)
+input_react      input_list.txt      	 									# will be named for users, ignore         # input reactants list
+pygsm_path       /home/mwoulfe/bin/pyGSM/pygsm/wrappers/main.py        		# pathway to pygsm
+ff               mmff94                                                   	# force-field applied for joint optimization
+
+# TCIT arguments
+apply_TCIT       False                                                     	# Apply TCIT to prune product or not
+TCIT_result      /depot/bsavoie/data/TCIT/TCIT_result.json       		# TCIT result dict
+Hf_cut           55                                                      	# When enthalpy change > Hf_cut kJ/mol, exlcude this reaction pathway
+low-IRC          True 								# include low-IRC calcs or not
+
+# basic arguments
+charge           0			# charge (will change depending on molecule)
+unpair           0			# unpair lone electron (will change depending on molecule)
+batch            slurm      # scheduler, pbs and slurm are valid options
+sched            slurm     	# scheduler argument for the script (for halstead/brown, slurm is the only option)
+restart_step     None    	# Indicates which step is done, default is None, normally run the job (Option: None,GSM,low-TS,DFT-TS,low-IRC,IRC)
+select_conf      True		# If is True, duplicated TS will be excluded
+DFT-IRC		     True      	# If is True, perform IRC calculation at DFT level
+criterion 	     S		   	# two criteria can be selected to down-select based on the xTB IRC results. 'S' means if IRC nodes match reactant; 'D' means IRC node match either R/P  
+memory        	 1000     	# memory per cpu (recommand to be less than 1000MB)
+IRC-image     	 60       	# maximum image number for IRC calculation
+stepsize      	 15        	# step size for IRC calculation
+IRC-model	     /home/mwoulfe/bin/YARP/version2.0/yaks/utilities/general_model.json  		# intended classification model
+compute_product  False		# when this flag is on, also add product into DFT calculation list (doesn't work for input type = 0)
+
+# GSM setting
+level            xTB      	# level of theory (if xTB/ANI, directly use pyGSM-xTB/pyGSM-ANI, others use pyGSM-Orca/pyGSM-Gaussian)
+Nimage           9         	# Number of images for each reaction pathway (9 is default for pyGSM DE-GSM)
+add-tor          0.01      	# Convergence tolerance for adding new node (default: 0.01)
+conv-tor         0.005     	# Convergence tolerance for optimizing nodes (default: 0.005)
+relax_end        False     	# If is False, the end nodes will be fixed by pyGSM
+low_wt           4         	# walltime for each calculation
+low_njobs        8        	# number of jobs for each submit file
+low_queue        standby   	# queue to submit the jobs to
+low_procs        1         	# only works for pyGSM-Orca/pyGSM-Gaussian, note:	currently if this value	is larger than 1, parallelization only supports 1 job per node
+
+# CONF-GEN setting
+c_method     	 crest 		# method that you want to use for conformational sampling (crest or rdkit)
+c_wt             4         	# walltime for each CREST calculation
+c_njobs		     1		   	# number of CREST jobs for each submit file
+c_nprocs 	     8		  	# number of cpus for each CREST jobs
+n_max		     5		  	# maximum number of conformations to be considered
+c_queue		     standby 	# queue to submit the jobs to
+add-joint        True      	# If is true, apply joint-optimization to obtain one conformation (only works for input type == 0)
+# c_path         /scratch/bell/mwoulfe/YARP/conformer/  # pathway to CREST conformer folder
+
+# Cluster arguments for TS-location & IRC calculation
+functional    B3LYP        	# functional for both TS geo-opt and IRC
+basis         TZVP        	# basis set for both TS geo-opt and IRC
+dispersion    D3		  	# EmpiricalDispersion keyword (option: None, D2, D3, D3BJ)
+solvation     None		   	# Solvation method (Should be A/B format where A refers to model and B refers to solvent, default: None)
+high_wt       4           	# walltime for each calculation
+ppn           16        	# number of cpus per node
+high_procs    16          	# number of processors for each Gaussian job. Should divide into ppn argugment
+high_njobs    1           	# number of jobs for each submit file
+high_queue    standby      	# queue to submit the jobs to
+parallel      perpendicular	# select horizontal or perpendicular
+eps 		  0 			# default is 0
+
+
+
+
