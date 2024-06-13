@@ -1,0 +1,49 @@
+# ordered by appearance in write_yaml.py
+
+output_path      /scratch/bell/mwoulfe/YARP/yaml                   # path to GSM output fodler
+file_name        q13s                                           # "name".yaml
+mass_frac      OCC1OC(O)C(C(C1O)O)O:1                            # list species with initial concentration of 1. ex: D-glucose -> OCC1OC(O)C(C(C1O)O)O (as yarp outputs it)
+reactant_dict    /home/mwoulfe/bin/YARP/version2.0/dict/glu_Pb3f3.p            # path to reactant dictionary
+q_reactant_dict    /home/mwoulfe/bin/YARP/version2.0/dict/reactants_Pb3f3.p            # path to Qiyuan D-glucose network dictionary
+E_dict             /depot/bsavoie/data/YARP/DFT-db/B3LYPD3_TZVP.db                    # explored node energy
+smi2inchi          /home/mwoulfe/bin/YARP/version2.0/dict/smile2InchiDict.p           # dict of smiles key and inchi values
+
+scratch_path        /scratch/bell/mwoulfe/YARP    # path to folder in scratch (that holds folders of interest) 
+scratch_folders         NA  # delimiter is ',' don't include spaces
+# list of folders in scratch_path     step8                             step9                                                               step10                            step11                                                              step12                           step13                                                              step14                                                              step15                                                                               step16                                                                                 
+
+# Additional Instructions
+# if you don't want to include folders from scratch/depot, enter NA
+# Must include non water-cat YARP folder if you include water-cat YARP folder
+
+depot_path          /depot/bsavoie/data/Michael/glucose         # path to folder in depot (that holds folders of interest)
+depot_folders       step0,step0_wc,step1,step1_wc,step2,step2_wc,step2b,step2b_wc,step2d,step2d_wc,uni_ax,uni_af,wc_uni_af,step3,step3_wc,step3b,step3b_wc,step2c,step2c_wc,uni_ci,wc_uni_ci,uni_ch,wc_uni_ch,step3c,step3c_wc,step3d,step3d_wc,step3e,step3e_wc,step4,step4_wc,uni_at,wc_uni_at #,step3f,step3f_wc,step3g,step3g_wc,uni_bi,wc_uni_bi,uni_ac,wc_uni_ac,uni_bq,wc_uni_bq,step4b,step4b_wc,uni_ak,wc_uni_ak,uni_bh,wc_uni_bh,uni_ab,wc_uni_ab,uni_al,wc_uni_al,uni_i,wc_uni_i,uni_cd,wc_uni_cd,uni_as,wc_uni_as,uni_bl,wc_uni_bl,uni_bj,wc_uni_bj,uni_cr,wc_uni_cr,uni_cn,wc_uni_cn,uni_dh,wc_uni_dh,uni_dj,wc_uni_dj,bimol_z,wc_bimol_z,uni_cu,wc_uni_cu,uni_hm,wc_uni_hm,uni_dd,wc_uni_dd,uni_hl,wc_uni_hl,uni_ho,wc_uni_ho,uni_dl,wc_uni_dl,uni_de,wc_uni_de,uni_hp,wc_uni_hp,uni_gv,wc_uni_gv,uni_cx,wc_uni_cx,uni_bg,wc_uni_bg,uni_gy,wc_uni_gy,uni_hv,wc_uni_hv,uni_hw,wc_uni_hw,uni_id,wc_uni_id,uni_dn,wc_uni_dn,uni_ic,wc_uni_ic,uni_ha,wc_uni_ha,uni_ie,wc_uni_ie,uni_im,wc_uni_im,uni_in,wc_uni_in,uni_io,wc_uni_io,uni_br,wc_uni_br,uni_dm,wc_uni_dm #         uni_br,wc_uni_br,uni_f,wc_uni_f,uni_cq,wc_uni_cq,uni_l,wc_uni_l,uni_au,wc_uni_au,uni_cv,wc_uni_cv,uni_cw,wc_uni_cw,uni_fi,wc_uni_fi,uni_dj,wc_uni_dj,uni_dh,wc_uni_dh,uni_dk,wc_uni_dk,uni_dl,wc_uni_dl,uni_gv,wc_uni_gv,uni_de,wc_uni_de,uni_gy,wc_uni_gy,uni_dn,wc_uni_dn,uni_ha,wc_uni_ha,uni_dm,wc_uni_dm,uni_fl,wc_uni_fl,uni_do,wc_uni_do,uni_dr,wc_uni_dr,uni_hk,wc_uni_hk,uni_dg,wc_uni_dg,uni_hj,wc_uni_hj,uni_hn,wc_uni_hn,uni_eh,wc_uni_eh,uni_hq,wc_uni_hq,uni_er,wc_uni_er,uni_hr,wc_uni_hr,uni_hs,wc_uni_hs,uni_ev,wc_uni_ev,uni_ex,wc_uni_ex,uni_hx,wc_uni_hx,uni_hy,wc_uni_hy,uni_hu,wc_uni_hu,uni_ez,wc_uni_ez,uni_fo,wc_uni_fo,uni_ej,wc_uni_ej,uni_ia,wc_uni_ia,uni_ib    # delimiter is ',' don't include spaces
+# list of folders in depot_path                   #step2                                                                  #step3                                                                              #step4                                                                            #step5                                                              #step6                                                                               #step7                                                                              step8                                                                                                  step9                                                              10                                                                                     step11                                                                                step12                                                                              step13                                                                                  14              15                scratch path(from 8th step)                                                                                                                      
+
+# basic arguments (in case you want to submit script to cluster, vice run on head node)
+batch               slurm                # scheduler, pbs and slurm are valid options
+sched               slurm                # scheduler argument for the script (for halstead/brown, slurm is the only option)
+memory        	    1000                 # memory per cpu (recommand to be less than 1000MB)
+Ea_cutoff           65                 	 # activation energy threshold (kcal/mol), rxns with larger barriers will be ignored
+wall_time           4                    # walltime for each calculation
+queue               bsavoie              # queue to submit the jobs to
+
+# yaml specific arguements
+rads                no                     # yes to include rads in yaml, no to exclude
+rev_rxns            yes                     # include calculated reverse rxns (if we have energies of products and reactants)
+energy_units        kcal/mol                # look up other options
+eos                 ideal-gas               # Other options https://cantera.org/documentation/dev/sphinx/html/yaml/phases.html
+elements            C,H,O,E              # elements involved in reaction (always include E), can also just delete section and it'll be fine
+kinetics            gas                     # none, gas, surface, edge
+reactions           all                     # all, declared-species (list of species to determine which rxns to use), none, others
+# transport                    none                        # can add in if we choose
+temp                623                     # in Kelvin (Temperature)
+pres                101325                  # Pressure
+pres_units          Pa                      # Pascals
+model_type          constant-cp             # type of model cantera is running (look up other options)
+
+
+
+
+
+

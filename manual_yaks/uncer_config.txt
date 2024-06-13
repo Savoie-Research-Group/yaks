@@ -1,0 +1,38 @@
+# write_yaml.py config file
+
+output_path      /scratch/bell/mwoulfe/YARP/yaml                                    # path to yaml output fodler
+file_name        un_no_19_rev                                                            # "name".yaml
+mol_fraction      OCC1OC(O)C(C(C1O)O)O:1                                            # list species with initial concentration of 1. ex: D-glucose -> OCC1OC(O)C(C(C1O)O)O:1 or OOCCC=O:0.5,CC(O)C:0.5
+reactant_dict      /home/mwoulfe/bin/YARP/version2.0/dict/glu_Pb3f3.p               # path to reactant dictionary
+E_dict             /depot/bsavoie/data/YARP/DFT-db/B3LYPD3_TZVP.db                  # explored node energy
+smi2inchi          /home/mwoulfe/bin/YARP/version2.0/dict/smile2InchiDict.p         # dict of smiles key and inchi values (will create one if not already made)
+
+# if you don't want to include folders from scratch/depot, enter NA
+scratch_path        /scratch/bell/mwoulfe/YARP                                      # path to target directory (that holds yarp outputs of interest) 
+scratch_folders     uni_ko,wc_uni_ko,uni_kp,wc_uni_kp,uni_kq,wc_uni_kq #,uni_kr,wc_uni_kr,uni_ks,wc_uni_ks,uni_kt,wc_uni_kt,uni_ku,wc_uni_ku,uni_kv,wc_uni_kv,uni_kw,wc_uni_kw,uni_kx,wc_uni_kx # list of folders in scratch_path (fold1,fold2,fold3,etc)
+
+depot_path          /depot/bsavoie/data/Michael/glucose                             # path to seond target folder (that holds folders of interest)
+# b3f3
+#depot_folders       step0,step0_wc,step0_b3f3,step1,step1_wc,step1_b3f3,step2,step2_wc,step2_b3f3,step2b,step2b_wc,step2b_b3f3,step2d,step2d_wc,step2d_b3f3,uni_ch,wc_uni_ch,uni_ch_b3f3,uni_ax,uni_ax_b3f3,step4,step4_wc,step3,step3_wc,step3_b3f3,uni_af,wc_uni_af,uni_af_b3f3,step3b,step3b_wc,step3b_b3f3,step2c,step2c_wc,step2c_b3f3,uni_ci,wc_uni_ci,uni_ci_b3f3,step3e,step3e_wc,step3e_b3f3,step3d,step3d_wc,step3d_b3f3,step3c,step3c_wc,step3c_b3f3,uni_bh,wc_uni_bh,uni_bh_b3f3,uni_fi,wc_uni_fi,uni_fi_b3f3,uni_bl,wc_uni_bl,uni_bl_b3f3,step3g,step3g_wc,step3f,step3f_wc,step3f_b3f3,uni_bi,wc_uni_bi,uni_bi_b3f3,uni_bq,wc_uni_bq,uni_bq_b3f3,step4b,step4b_wc,step4b_b3f3,uni_cn,wc_uni_cn,uni_cn_b3f3,uni_bg,wc_uni_bg,uni_bg_b3f3,uni_ak,wc_uni_ak,uni_ak_b3f3,uni_al,wc_uni_al,uni_al_b3f3,uni_cu,wc_uni_cu,uni_cu_b3f3,uni_f,wc_uni_f,uni_de,wc_uni_de,uni_de_b3f3,uni_i,wc_uni_i,uni_i_b3f3 # list of folders in depot_path                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# wc and Cb3f3 only
+depot_folders       step0,step0_wc,step1,step1_wc,step2,step2_wc,step2b,step2b_wc,step2d,step2d_wc,uni_af,wc_uni_af,uni_ax,step3,step3_wc,step3b,step3b_wc,step2c,step2c_wc,uni_ci,wc_uni_ci,uni_ch,wc_uni_ch,step4,step4_wc,step3e,step3e_wc,step3d,step3d_wc,step3c,step3c_wc,uni_bl,wc_uni_bl,uni_at,wc_uni_at,uni_fi,wc_uni_fi,step3g,step3g_wc,step3f,step3f_wc,uni_bi,wc_uni_bi,uni_bq,wc_uni_bq,step4b,step4b_wc,uni_cn,wc_uni_cn,uni_al,wc_uni_al,uni_ak,wc_uni_ak,uni_bg,wc_uni_bg,uni_cu,wc_uni_cu,uni_i,wc_uni_i,uni_ac,wc_uni_ac,uni_bh,wc_uni_bh,uni_de,wc_uni_de,uni_cx,wc_uni_cx,uni_f,wc_uni_f,uni_as,wc_uni_as,uni_bn,wc_uni_bn,uni_dj,wc_uni_dj,uni_ab,wc_uni_ab,uni_bj,wc_uni_bj,uni_dz,wc_uni_dz,uni_dk,wc_uni_dk,uni_ek,wc_uni_ek,uni_dl,wc_uni_dl,uni_em,wc_uni_em,uni_cd,wc_uni_cd,uni_dn,wc_uni_dn,uni_dm,wc_uni_dm,uni_do,wc_uni_do,uni_cr,wc_uni_cr,uni_dh,wc_uni_dh,uni_dr,wc_uni_dr,uni_ec,wc_uni_ec,uni_gv,wc_uni_gv,uni_cl,wc_uni_cl,uni_dp,wc_uni_dp,uni_dv,wc_uni_dv,uni_ea,wc_uni_ea,uni_gy,wc_uni_gy,uni_br,wc_uni_br,uni_ed,wc_uni_ed,uni_dy,wc_uni_dy,uni_ep,wc_uni_ep,uni_ha,wc_uni_ha,uni_bm,wc_uni_bm,uni_dq,wc_uni_dq,uni_ds,wc_uni_ds,uni_fj,wc_uni_fj,uni_ja,wc_uni_ja,uni_dt,wc_uni_dt,uni_du,wc_uni_du,uni_eg,wc_uni_eg,uni_ei,wc_uni_ei,uni_dw,wc_uni_dw,uni_dx,wc_uni_dx,uni_el,wc_uni_el,uni_fw,wc_uni_fw,uni_eq,wc_uni_eq,uni_ef,wc_uni_ef,uni_jr,wc_uni_jr,uni_fb,wc_uni_fb,uni_eo,wc_uni_eo # list of folders in depot_path   
+# list of folders in depot_path              step1                     step2                                              step3                                                                             step4                                                                              step5                                                                                 step6                                                                               step7                                                                              step8                                                                              step9                                                               step10                                                                              step11                                                                                step12                                                                               step13                                                              step14                                                                               step15                                                              step16                                                                               step17                                                              step18                                             step19
+
+# yaml specific arguements
+Ea_cutoff           55                 	    # activation energy threshold (kcal/mol), rxns with larger barriers will be ignored
+rads                no                      # "yes" to include rads in yaml, "no" to exclude
+rev_rxns            yes                     # "yes" to include calculated reverse rxns (if we have energies of products and reactants), no to exclude
+energy_units        kcal/mol                # look up other options
+eos                 ideal-gas               # Other options https://cantera.org/documentation/dev/sphinx/html/yaml/phases.html
+kinetics            gas                     # none, gas, surface, edge
+reactions           all                     # all, declared-species (list of species to determine which rxns to use), none, others
+temp                623                     # in Kelvin (Temperature)
+pres                101325                  # Pressure
+pres_units          Pa                      # Pascals
+model_type          constant-cp             # type of model cantera is running (look up other options)
+
+
+
+
+
+

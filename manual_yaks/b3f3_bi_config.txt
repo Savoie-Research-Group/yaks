@@ -1,0 +1,47 @@
+# ordered by appearance in write_yaml.py
+
+output_path      /scratch/bell/mwoulfe/YARP/yaml                   # path to GSM output fodler
+file_name       14_all                                        # "name".yaml
+mol_fraction      OCC1OC(O)C(C(C1O)O)O:1                           # list species with initial concentration of 1. ex: D-glucose -> OCC1OC(O)C(C(C1O)O)O (as yarp outputs it)
+reactant_dict    /home/mwoulfe/bin/YARP/version2.0/dict/glu_Pb3f3.p            # path to reactant dictionary
+E_dict             /depot/bsavoie/data/YARP/DFT-db/B3LYPD3_TZVP.db                    # explored node energy
+smi2inchi          /home/mwoulfe/bin/YARP/version2.0/dict/smile2InchiDict.p           # dict of smiles key and inchi values
+
+scratch_path        /scratch/bell/mwoulfe/YARP    # path to folder in scratch (that holds folders of interest) 
+scratch_folders      uni_jz_b3f3,uni_ic_b3f3,uni_id_b3f3,uni_ie_b3f3,uni_im_b3f3,uni_in_b3f3,uni_hv_b3f3,uni_io_b3f3 #uni_ju,wc_uni_ju,uni_ju_b3f3,uni_ic_b3f3,uni_bg_b3f3,uni_id_b3f3,uni_hp_b3f3,uni_jv,uni_ie_b3f3,uni_im_b3f3,uni_in_b3f3,uni_dd_b3f3,uni_hv_b3f3,uni_cu_b3f3,uni_jx,wc_uni_jx,uni_jx_b3f3,uni_jy,wc_uni_jy,uni_jy_b3f3,uni_be_b3f3,uni_io_b3f3,uni_dd_b3f3,uni_kb,wc_uni_kb,uni_kb_b3f3,uni_hl_b3f3,uni_ba_b3f3,uni_de_b3f3,uni_kd,uni_kd_b3f3,wc_uni_kd    # delimiter is ',' don't include spaces
+# list of folders in scratch_path                        step12                                                   no jg b3f3 (small molecule_)    step13                                                                                         step14                                                          step15                                                           
+
+# Additional Instructions
+# if you don't want to include folders from scratch/depot, enter NA
+# Must include non water-cat YARP folder if you include water-cat YARP folder
+
+depot_path          /depot/bsavoie/data/Michael/glucose         # path to folder in depot (that holds folders of interest)
+depot_folders       step0_b3f3,step0,step0_hf_check,step0_wc,step1,step1_wc,step1_b3f3,step2,step2_wc,step2_b3f3,step2b,step2b_wc,step2b_b3f3,step2d,step2d_wc,step2d_b3f3,uni_af,wc_uni_af,uni_af_b3f3,uni_ax,uni_ax_b3f3,step3,step3_wc,step3_b3f3,uni_ch,wc_uni_ch,uni_ch_b3f3,step3b,step3b_wc,step3b_b3f3,step2c,step2c_wc,step2c_b3f3,uni_ci,wc_uni_ci,uni_ci_b3f3,step4,step4_wc,step3c,step3c_wc,step3c_b3f3,step3d,step3d_wc,step3d_b3f3,step3e,step3e_wc,step3e_b3f3,uni_at,wc_uni_at,uni_at_b3f3,uni_fi,wc_uni_fi,uni_fi_b3f3,step3g,step3g_wc,step3f,step3f_wc,step3f_b3f3,uni_bl,wc_uni_bl,uni_bl_b3f3,uni_bi,wc_uni_bi,uni_bi_b3f3,uni_bq,wc_uni_bq,uni_bq_b3f3,step4b,step4b_wc,step4b_b3f3,uni_ak,wc_uni_ak,uni_ak_b3f3,uni_bg,wc_uni_bg,uni_bg_b3f3,uni_cn,wc_uni_cn,uni_cn_b3f3,uni_al,wc_uni_al,uni_al_b3f3,uni_i,wc_uni_i,uni_i_b3f3,uni_cu,wc_uni_cu,uni_cu_b3f3,uni_f,wc_uni_f,uni_f_b3f3,uni_bn,wc_uni_bn,uni_de,wc_uni_de,uni_de_b3f3,bimol_z,wc_bimol_z,bimol_z_b3f3,uni_cx,wc_uni_cx,uni_cx_b3f3,uni_jg,uni_l,wc_uni_l,uni_bh,wc_uni_bh,uni_bh_b3f3,uni_jd,wc_uni_jd,uni_jd_b3f3,uni_ho,wc_uni_ho,uni_ho_b3f3,uni_hp,wc_uni_hp,uni_hp_b3f3,uni_jj,wc_uni_jj,uni_jj_b3f3,uni_aq,wc_uni_aq,uni_ac,wc_uni_ac,uni_ac_b3f3,uni_jz,wc_uni_jz,uni_id,wc_uni_id,uni_ic,wc_uni_ic,uni_jo,wc_uni_jo,uni_jo_b3f3,uni_kl,wc_uni_kl,uni_kl_b3f3,uni_im,wc_uni_im,uni_in,wc_uni_in,uni_ie,wc_uni_ie,uni_hv,wc_uni_hv,uni_hl,uni_hl_b3f3,uni_io,wc_uni_io,uni_dd,wc_uni_dd,uni_dd_b3f3,uni_hm,wc_uni_hm,uni_kd,wc_uni_kd,uni_kd_b3f3,uni_kj,wc_uni_kj,uni_kj_b3f3,uni_it,wc_uni_it,uni_be,wc_uni_be,uni_be_b3f3,uni_kb,wc_uni_kb,uni_kb_b3f3,uni_iu,wc_uni_iu,uni_hw,wc_uni_hw              # delimiter is ',' don't include spaces
+# list of folders in depot_path                                            #step3                                                                                                                                           step4                                                                                                                                       #step5                                                                                                                              #step6                                                                                                                              step7                                                                                                                                            step8                                                                                                                                                        step9                                                                                                                                       step10                                                                                                                               step11                                                                                                       step12                                                                                 step13                                                                                                                   step14                                                                                                                               step15
+
+# basic arguments (in case you want to submit script to cluster, vice run on head node)
+batch               slurm                # scheduler, pbs and slurm are valid options
+sched               slurm                # scheduler argument for the script (for halstead/brown, slurm is the only option)
+memory        	    1000                 # memory per cpu (recommand to be less than 1000MB)
+Ea_cutoff           65                 	 # activation energy threshold (kcal/mol), rxns with larger barriers will be ignored
+wall_time           4                    # walltime for each calculation
+queue               bsavoie              # queue to submit the jobs to
+
+# yaml specific arguements
+rads                no                     # yes to include rads in yaml, no to exclude
+rev_rxns            yes                     # include calculated reverse rxns (if we have energies of products and reactants)
+energy_units        kcal/mol                # look up other options
+eos                 ideal-gas               # Other options https://cantera.org/documentation/dev/sphinx/html/yaml/phases.html
+kinetics            gas                     # none, gas, surface, edge
+reactions           all                     # all, declared-species (list of species to determine which rxns to use), none, others
+# transport                    none                        # can add in if we choose
+temp                623                     # in Kelvin (Temperature)
+pres                101325                  # Pressure
+pres_units          Pa                      # Pascals
+model_type          constant-cp             # type of model cantera is running
+
+
+
+
+
+
